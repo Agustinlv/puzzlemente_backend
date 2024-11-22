@@ -7,18 +7,18 @@ export async function hashPassword(password){
 
         return hashedPassword
     } catch (error) {
-        console.log(error.message)
+        return error.message
     }
 }
 
-export async function isValidHash(password, storedHash){
+export async function validateHash(storedHash, password){
     try {
-        if(await argon2.verify(storedHash, password)){
+        if (await argon2.verify(storedHash, password)) {
             return true
         } else {
             return false
         }
     } catch(error) {
-        console.log(error.message)
+        return error.message
     }
 }

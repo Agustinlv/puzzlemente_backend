@@ -10,7 +10,6 @@ const router = Router()
 export default router
     .get('/', userController.get)
     .get('/id/:id', userController.getById)
-    .get('/username/:username', userController.getByUsername)
     .post('/', userValidate.newUser, userController.create)
     .put('/:id', userController.update)
     .delete('/:id', userController._delete)

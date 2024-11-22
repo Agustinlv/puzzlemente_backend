@@ -8,4 +8,5 @@ import * as sessionValidate from '../validators/session.validate.js'
 const router = Router()
 
 export default router
-    .post('/', sessionValidate.credentials, sessionController.login)
+    .post('/login', sessionValidate.login, sessionController.login)
+    .put('/logout', sessionController.logout)

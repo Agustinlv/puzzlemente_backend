@@ -11,6 +11,8 @@ export const get = async (req, res) => {
     } catch (error){
         res.status(500).send({ success: false, message: error.message })
     }
+
+    res.end()
 }
 
 export const getById = async (req, res) => {
@@ -23,18 +25,8 @@ export const getById = async (req, res) => {
     } catch (error){
         res.status(500).send({ success: false, message: error.message })
     }
-}
 
-export const getByUsername = async (req, res) => {
-    try{
-        const { username } = req.params
-
-        const response = await service.findByUsername(username)
-
-        res.json({ success: true, data: response })
-    } catch (error) {
-        res.status(500).send({ success: false, message: error.message })
-    }
+    res.end()
 }
 
 export const create = async (req, res) => {
@@ -47,6 +39,8 @@ export const create = async (req, res) => {
     } catch (error) {
         res.status(500).send({ success: false, message: error.message })
     }
+
+    res.end()
 }
 
 export const update = async (req, res) => {
@@ -61,6 +55,8 @@ export const update = async (req, res) => {
     } catch (error) {
         res.status(500).send({ success: false, message: error.message })
     }
+
+    res.end()
 }
 
 export const _delete = async (req, res) => {
@@ -73,4 +69,6 @@ export const _delete = async (req, res) => {
     } catch (error) {
         res.status(500).send({ success: false, message: error.message })
     }
+
+    res.end()
 }

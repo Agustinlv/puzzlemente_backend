@@ -1,7 +1,7 @@
 //File imports
-import { sequelize } from '../libs/sequelize.js'
-import { hashPassword } from '../utils/hash.js'
-import { User, UserSchema } from '../db/models/user.model.js'
+import { sequelize } from "../libs/sequelize.js"
+import { hashPassword } from "../utils/hash.js"
+import { User, UserSchema } from "../db/models/user.model.js"
 
 User.init(UserSchema, User.config(sequelize))
 

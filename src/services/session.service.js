@@ -1,5 +1,5 @@
 //File imports
-import { generateToken } from "../utils/token.js"
+import { generateToken } from '../utils/token.js'
 
 export default class SessionService{
     constructor(){
