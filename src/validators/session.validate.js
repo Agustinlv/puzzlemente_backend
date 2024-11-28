@@ -6,8 +6,13 @@ const service = new UserService()
 
 export async function login(req, res, next){
     const { username, password } = req.body
+    let user = {}
 
-    const user = await service.findByUsername(username)
+    try {
+        user = await service.findByUsername(username)
+    } catch (error) {
+        return res.status(400).send({status: "Error", message: error.message})
+    }
 
     if (!user) {
         return res.status(403).send({status: "Error", message: "Credenciales incorrectas"})
