@@ -5,11 +5,11 @@ import UserService from '../services/user.service.js'
 const service = new UserService()
 
 export async function login(req, res, next){
-    const { username, password } = req.body
+    const { email, password } = req.body
     let user = {}
 
     try {
-        user = await service.findByUsername(username)
+        user = await service.findByEmail(email)
     } catch (error) {
         return res.status(400).send({status: "Error", message: error.message})
     }

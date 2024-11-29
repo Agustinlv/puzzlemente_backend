@@ -1,14 +1,14 @@
 //File imports
-import { generateToken } from '../utils/token.js'
+import { generateToken, verifyToken } from '../utils/token.js'
 
 export default class SessionService{
-    constructor(){
+    constructor(){}
 
+    generateToken(id, email, userlevel){
+        return generateToken(id, email, userlevel)
     }
 
-    async generateToken(user){
-        const token = generateToken(user)
-
-        return token
+    verifyToken(token){
+        return verifyToken(token)
     }
 }
