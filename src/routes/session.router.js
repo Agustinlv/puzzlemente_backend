@@ -9,5 +9,5 @@ const router = Router()
 
 export default router
     .post('/login', sessionValidate.login, sessionController.login)
-    .post('/auth', sessionController.verifyToken)
+    .post('/auth', sessionController.validateToken)
     .get('/logout', sessionController.logout)

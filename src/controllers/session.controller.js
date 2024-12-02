@@ -6,10 +6,21 @@ const sessionService = new SessionService()
 export async function login(req, res){
     try {
         const user = req.user
-        const { id, email, userlevel_id } = user
-        const token = sessionService.generateToken(id, email, userlevel_id)
+        
+        const { id, email, role, name, lastname, username } = user
+        
+        const userData = {
+            id: id,
+            email: email,
+            role: role,
+            name: name,
+            lastname: lastname,
+            username: username
+        }
 
-        res.cookie('jwt', token, {httpOnly: true}).status(200).send({success: true, message: "You have successfully logged in", token})
+        const token = sessionService.generateToken(userData)
+
+        res.cookie('jwt', token, {httpOnly: true}).status(200).send({success: true, message: "You have successfully logged in", token: token, name: name, lastname: lastname, username: username, role: role})
     } catch (error) {
         res.status(500).send({ success: false, message: error.message })
     }
@@ -17,14 +28,14 @@ export async function login(req, res){
     res.end()
 }
 
-export async function verifyToken (req, res){
+export async function validateToken (req, res){
     try {
         const { token } = req.body
 
-        const decodedToken = sessionService.verifyToken(token)
+        const { name, lastname, username, role } = sessionService.verifyToken(token)
 
-        if (decodedToken) {
-            res.status(200).send({success: true, userlevel: decodedToken.userlevel, message: 'This is a valid token'})
+        if (username) {
+            res.status(200).send({success: true, message: 'The token is valid', name: name, lastname: lastname, username: username, role: role})
         } else {
             res.status(403).send({success: false, userlevel: 0, message: 'This is not a valid token'})
         }

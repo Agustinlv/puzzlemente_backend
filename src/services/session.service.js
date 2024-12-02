@@ -4,8 +4,8 @@ import { generateToken, verifyToken } from '../utils/token.js'
 export default class SessionService{
     constructor(){}
 
-    generateToken(id, email, userlevel){
-        return generateToken(id, email, userlevel)
+    generateToken(userData){
+        return generateToken(userData)
     }
 
     verifyToken(token){

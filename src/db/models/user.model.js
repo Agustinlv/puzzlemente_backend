@@ -39,10 +39,10 @@ export const UserSchema = {
         allowNull: false,
         field: 'email'
     },
-    userlevel_id:{
-        type: DataTypes.INTEGER,
+    role:{
+        type: DataTypes.STRING,
         allowNull: true,
-        field: 'userlevel_id'
+        field: 'role'
     },
     password:{
         type: DataTypes.STRING,
