@@ -35,9 +35,9 @@ export const create = async (req, res) => {
         
         const response = await service.create(name , lastname, username, email, password)
 
-        res.json({ success: true, data: response })
+        res.json({ success: true, message: 'Usuario creado con éxito', data: response })
     } catch (error) {
-        res.status(500).send({ success: false, message: error.message })
+        res.status(500).send({ success: false, message: error.message, data: {} })
     }
 
     res.end()
